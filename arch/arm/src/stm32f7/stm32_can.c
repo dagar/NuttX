@@ -81,7 +81,7 @@
 #define CAN_BIT_QUANTA (CONFIG_STM32F7_CAN_TSEG1 + CONFIG_STM32F7_CAN_TSEG2 + 1)
 
 #ifndef CONFIG_DEBUG_CAN_INFO
-#  undef CONFIG_STM32_CAN_REGDEBUG
+#  undef CONFIG_STM32F7_CAN_REGDEBUG
 #endif
 
 /****************************************************************************
@@ -113,7 +113,7 @@ static void stm32can_putreg(FAR struct stm32_can_s *priv, int offset,
                             uint32_t value);
 static void stm32can_putfreg(FAR struct stm32_can_s *priv, int offset,
                              uint32_t value);
-#ifdef CONFIG_STM32_CAN_REGDEBUG
+#ifdef CONFIG_STM32F7_CAN_REGDEBUG
 static void stm32can_dumpctrlregs(FAR struct stm32_can_s *priv,
                                   FAR const char *msg);
 static void stm32can_dumpmbregs(FAR struct stm32_can_s *priv,
@@ -282,7 +282,7 @@ static struct can_dev_s g_can3dev =
  *
  ****************************************************************************/
 
-#ifdef CONFIG_STM32_CAN_REGDEBUG
+#ifdef CONFIG_STM32F7_CAN_REGDEBUG
 static uint32_t stm32can_vgetreg(uint32_t addr)
 {
   static uint32_t prevaddr = 0;
@@ -376,7 +376,7 @@ static uint32_t stm32can_getfreg(FAR struct stm32_can_s *priv, int offset)
  *
  ****************************************************************************/
 
-#ifdef CONFIG_STM32_CAN_REGDEBUG
+#ifdef CONFIG_STM32F7_CAN_REGDEBUG
 static void stm32can_vputreg(uint32_t addr, uint32_t value)
 {
   /* Show the register value being written */
@@ -428,7 +428,7 @@ static void stm32can_putfreg(FAR struct stm32_can_s *priv, int offset,
  *
  ****************************************************************************/
 
-#ifdef CONFIG_STM32_CAN_REGDEBUG
+#ifdef CONFIG_STM32F7_CAN_REGDEBUG
 static void stm32can_dumpctrlregs(FAR struct stm32_can_s *priv,
                                   FAR const char *msg)
 {
@@ -473,7 +473,7 @@ static void stm32can_dumpctrlregs(FAR struct stm32_can_s *priv,
  *
  ****************************************************************************/
 
-#ifdef CONFIG_STM32_CAN_REGDEBUG
+#ifdef CONFIG_STM32F7_CAN_REGDEBUG
 static void stm32can_dumpmbregs(FAR struct stm32_can_s *priv,
                                 FAR const char *msg)
 {
@@ -534,7 +534,7 @@ static void stm32can_dumpmbregs(FAR struct stm32_can_s *priv,
  *
  ****************************************************************************/
 
-#ifdef CONFIG_STM32_CAN_REGDEBUG
+#ifdef CONFIG_STM32F7_CAN_REGDEBUG
 static void stm32can_dumpfiltregs(FAR struct stm32_can_s *priv,
                                   FAR const char *msg)
 {
@@ -1733,8 +1733,8 @@ static int stm32can_bittiming(FAR struct stm32_can_s *priv)
         }
     }
 
-  /* Otherwise, nquanta is CAN_BIT_QUANTA, ts1 is CONFIG_STM32_CAN_TSEG1,
-   * ts2 is CONFIG_STM32_CAN_TSEG2 and we calculate brp to achieve
+  /* Otherwise, nquanta is CAN_BIT_QUANTA, ts1 is CONFIG_STM32F7_CAN_TSEG1,
+   * ts2 is CONFIG_STM32F7_CAN_TSEG2 and we calculate brp to achieve
    * CAN_BIT_QUANTA quanta in the bit time
    */
 
@@ -2268,4 +2268,4 @@ FAR struct can_dev_s *stm32_caninitialize(int port)
   return dev;
 }
 
-#endif /* CONFIG_CAN && (CONFIG_STM32_CAN1 || CONFIG_STM32_CAN2) */
+#endif /* CONFIG_CAN && (CONFIG_STM32F7_CAN1 || CONFIG_STM32F7_CAN2) */

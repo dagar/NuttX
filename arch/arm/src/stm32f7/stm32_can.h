@@ -82,7 +82,7 @@
 #endif
 
 #if CONFIG_STM32F7_CAN_TSEG1 < 1 || CONFIG_STM32F7_CAN_TSEG1 > CAN_BTR_TSEG1_MAX
-#  error "CONFIG_STM32_CAN_TSEG1 is out of range"
+#  error "CONFIG_STM32F7_CAN_TSEG1 is out of range"
 #endif
 
 #ifndef CONFIG_STM32F7_CAN_TSEG2
@@ -90,7 +90,7 @@
 #endif
 
 #if CONFIG_STM32F7_CAN_TSEG2 < 1 || CONFIG_STM32F7_CAN_TSEG2 > CAN_BTR_TSEG2_MAX
-#  error "CONFIG_STM32_CAN_TSEG2 is out of range"
+#  error "CONFIG_STM32F7_CAN_TSEG2 is out of range"
 #endif
 
 /************************************************************************************
@@ -139,5 +139,5 @@ FAR struct can_dev_s *stm32_caninitialize(int port);
 #endif
 
 #endif /* __ASSEMBLY__ */
-#endif /* CONFIG_CAN && (CONFIG_STM32_CAN1 || CONFIG_STM32_CAN2) */
-#endif /* __ARCH_ARM_SRC_STM32_STM32_CAN_H */
+#endif /* CONFIG_CAN && (CONFIG_STM32F7_CAN1 || CONFIG_STM32F7_CAN2) */
+#endif /* __ARCH_ARM_SRC_STM32_STM32F7_CAN_H */
