@@ -1739,6 +1739,7 @@ static void spi_exchange(FAR struct spi_dev_s *dev, FAR const void *txbuffer,
                          FAR void *rxbuffer, size_t nwords)
 {
   FAR struct stm32_spidev_s *priv = (FAR struct stm32_spidev_s *)dev;
+  int ret;
 
   DEBUGASSERT(priv != NULL);
 
